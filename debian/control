@@ -1,0 +1,20 @@
+Source: apt-foxxy
+Section: foxxy
+Priority: required
+Maintainer: Lorenzo "Palinuro" Faletra <palinuro@foxxysec.org>
+Uploaders: Lorenzo "Palinuro" Faletra <palinuro@foxxysec.org>,
+Standards-Version: 4.1.0
+Build-Depends: debhelper (>= 10)
+Build-Depends-Indep: pkg-config
+Homepage: https://www.foxxysec.org/
+
+Package: apt-foxxy
+Architecture: all
+Priority: important
+Pre-Depends: foxxy-archive-keyring, apt
+Recommends: foxxy-core, python-apt-common
+Suggests: apt-transport-tor
+Replaces: foxxy-update-manager (<= 1.6)
+Description: Foxxy APT repositories
+ this package will install an /etc/apt/sources.list file containing
+ all the repositories provided by FrozenBox Dev Team for Foxxy OS

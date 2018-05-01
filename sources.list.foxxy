@@ -1,0 +1,18 @@
+# This file is empty, feel free to
+# add here your custom APT repositories
+
+# The standard Foxxy repositories
+# are NOT here. If you want to
+# edit them, take a look into
+#                /etc/apt/sources.list.d/foxxy.list
+
+
+
+# If you want to change the
+# default foxxy repositories by selectng
+# another localized mirror,
+# then use the command
+#                     foxxy-mirror-selector
+#
+# and see its usage message to
+# know what mirrors are available

@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+
+#update xapian index
+
+if [ -x "/usr/sbin/update-xapian-index" ]
+then
+	update-apt-xapian-index -vf
+fi
+
+
+
+
+#update default mirror
+
+if [ test `grep 'cloudflare.archive.foxxysec.org' /etc/apt/sources.list.d/foxxy.list` ];then
+        foxxy-mirror-selector default
+fi
+
+if [ test `grep 'mirrordirector.archive.foxxysec.org' /etc/apt/sources.list.d/foxxy.list` ];then
+        foxxy-mirror-selector default
+fi
+
+
+
+
+#install foxxy repositories if missing
+
+if ! [ -e "/etc/apt/sources.list.d/foxxy.list" ]
+then
+	foxxy-mirror-selector default stable nonfree
+	cat /etc/apt/sources.list.foxxy > /etc/apt/sources.list
+fi
+
+if [ -e "/etc/foxxy.testing" ]
+then
+	foxxy-mirror-selector default testing nonfree
+fi
+
+if ! [ -e "/etc/apt/sources.list" ]
+then
+	cat /etc/apt/sources.list.foxxy > /etc/apt/sources.list
+fi
